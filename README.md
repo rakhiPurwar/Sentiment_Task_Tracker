@@ -31,12 +31,12 @@ Helping a business to understand the social sentiment of their brand, product or
 ### Flow diagram
 ![image](https://user-images.githubusercontent.com/42908255/124773040-3427b400-df5a-11eb-8eee-271a240b85e4.png)
 # technologies used
-* fromt-end - html/css/js
-* back-end - flask(python3)
-* database - SQLite 
-* machine learning algorithms tested for sentiment analysis - logistic regression, decison tree, xgboost and naive bayes 
-* machine learning algorithms tested for emotional analysis - LSTM+GLOVE, ROBERTA, ALBERT
-* machine learning algorithms used after performance analysis - naive bayse and ALBERT
+* Front-end - html/css/js
+* Back-end - flask(python3)
+* Database - SQLite 
+* Machine learning algorithms tested for sentiment analysis - logistic regression, decison tree, xgboost and naive bayes 
+* Machine learning algorithms tested for emotional analysis - LSTM+GLOVE, ROBERTA, ALBERT
+* Machine learning algorithms used after performance analysis - naive bayse and ALBERT
 [For complete demo click here](https://drive.google.com/file/d/1W2hqoRnOri4c4hL3PC7zyQEO0El90wkR/view?usp=sharing>)
 
 # Feedback page

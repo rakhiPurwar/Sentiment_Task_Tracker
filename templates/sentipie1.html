@@ -94,7 +94,7 @@
     
 
     <nav>
-        <a class="navbar-brand" href="/view-admin">
+        <a class="navbar-brand" href="/agent">
             <div class="logo-image">
                 <img src="{{url_for('static', filename='img/map_3.jpg')}}" class="img-fluid" class="center">
             </div>
@@ -102,10 +102,10 @@
         </button>
         <ul class="admin-menu">
             <li class="menu-heading">
-                <h3>SUPERVISOR</h3>
+                <h3>AGENT</h3>
             </li>
             <li>
-                <a href="/user">
+                <a href="#0">
                     <svg>
                         <use xlink:href="#users"></use>
                     </svg>
@@ -113,7 +113,7 @@
                 </a>
             </li>
             <li>
-                <a href="/google-charts/barchart">
+                <a href="/google-charts1/barchart1">
                     <svg>
                         <use xlink:href="#trends"></use>
                     </svg>
@@ -121,7 +121,7 @@
                 </a>
             </li>
             <li>
-                <a href="/google-charts/piechart">
+                <a href="/google-charts1/piechart1">
                     <svg>
                         <use xlink:href="#charts"></use>
                     </svg>
@@ -131,7 +131,6 @@
             <li class="menu-heading">
                 <h3>Settings</h3>
             </li>
-        
             <li>
                 <a href="http://127.0.0.1:5000/google/logout">
                     <svg>
@@ -140,7 +139,6 @@
                     <span>Log Out</span>
                 </a>
             </li>
-
             <li>
 
                 <button class="collapse-btn" aria-expanded="true" aria-label="collapse menu">
@@ -161,7 +159,7 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
         <div class="admin-profile">
-            <span class="greeting">Hello Supervisor</span>
+            <span class="greeting">Hello Agent</span>
             <div class="notifications">
             <span class="badge">{{count}}</span>
                 <svg>
@@ -197,35 +195,13 @@
             var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
             chart.draw(data, options);
         }
-
-        function drawChart2() {
-            var data2 = google.visualization.arrayToDataTable([
-                {% for key, value in data2.items() %}
-                    {% if value is string %}
-                        ['{{ key }}', '{{ value }}'],
-                    {% else %}
-                        ['{{ key }}', {{ value }}],
-                    {% endif %}
-                {% endfor %}
-            ]);
-
-            var options = {
-            title: 'Pie Chart for Change Values',
-            is3D: true,
-            };
-
-            var chart = new google.visualization.PieChart(document.getElementById('piechart_3d2'));
-            chart.draw(data2, options);
-        }
-        
         </script>
             </head>
             <body>
                 <div style="margin: 10px 0 0 10px;width: 1000px">
-                    <h3>Pie Chart for Sentimental Analysis</h3>
-                    
+                    <h3>Emotion Analysis for the given User</h3>
+                    <h4>Text : {{text}}</h4>
                     <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
-                    <div id="piechart_3d2" style="width: 900px; height: 500px;"></div>
                 </div>
             </body>
     </section>

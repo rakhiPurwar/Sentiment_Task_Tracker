@@ -5,8 +5,8 @@ import emoji
 import plotly.express as px
 import tensorflow as tf
 from transformers import AlbertTokenizerFast, TFAutoModel
-albert = tf.keras.models.load_model(r"E:\ODU\forbackup\albert_model")
-tokenizer = AlbertTokenizerFast.from_pretrained(r"E:\ODU\forbackup\tokenizer")
+albert = tf.keras.models.load_model(r"C:\Users\smdar\Downloads\multiclass\albert_model")
+tokenizer = AlbertTokenizerFast.from_pretrained(r"C:\Users\smdar\Downloads\multiclass\tokenizer")
 
 sent_to_id  = {"empty":0, "sadness":1,"enthusiasm":2,"neutral":3,"worry":4,
                "surprise":5,"love":6,"fun":7,"hate":8,"happiness":9,"boredom":10,"relief":11,"anger":12}

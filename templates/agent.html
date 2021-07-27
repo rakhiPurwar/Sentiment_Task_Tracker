@@ -105,7 +105,7 @@
                 <h3>Agent</h3>
             </li>
             <li>
-                <a href="/user">
+                <a href="#0">
                     <svg>
                         <use xlink:href="#users"></use>
                     </svg>
@@ -113,7 +113,7 @@
                 </a>
             </li>
             <li>
-                <a href="/google-charts/barchart2">
+                <a href="/google-charts1/barchart1">
                     <svg>
                         <use xlink:href="#trends"></use>
                     </svg>
@@ -121,7 +121,7 @@
                 </a>
             </li>
             <li>
-                <a href="/google-charts/piechart2">
+                <a href="/google-charts1/piechart1">
                     <svg>
                         <use xlink:href="#charts"></use>
                     </svg>
@@ -171,7 +171,7 @@
     </section>
 
     <section>
-    <h1 class="alert alert-primary" role="alert" align="center">Feedbacks Not Yet Responded To</h1>
+        <h1 class="alert alert-primary" role="alert" align="center">Unanswered Feedbacks</h1>
     </section>
     <section class="grid">
 
@@ -185,15 +185,16 @@
                 <p class="card-text">{{i.Text}}</p>
                 <form>
                     <h4 class="card-title">Sentiment : {{i.Sentiment}}</h4>
-			        <a onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&tf=1&to={{i.email}}&su=Regarding%20the%20issue%20related%20{{i.department}}','popup','width=600,height=600'); return false;" target="_blank" class="btn btn-primary">Reply</a>
+			        <a onclick="window.open('https://mail.google.com/mail/?view=cm&fs=1&tf=1&to={{i.email}}&su=Welcome%20to%20GAppsTips!','popup','width=600,height=600'); return false;" target="_blank" class="btn btn-primary">Reply</a>
                 </form>
-                <form action="/analyse/{{i.Id}}/">
+                <form action="/analyze1/{{i.Id}}/">
                     <button type="submit" class="btn btn-primary" style="background-color:#231e23; margin-top:10px; ">Analyze</button>
                 </form>
                 <form action="/replied/{{i.Id}}/">
                         <div class="form-check">
-		                <button style="float:center;background-color: #185adb;border: none;color:  #185adb;padding-bottom: 10px;padding: 10px;padding-top: 10px;text-align: center;text-decoration: none;display: inline-block;margin: .5px .5px;cursor: pointer;border-radius: 50%;" type="submit" onclick="myFunction1()" name="Read"></button>
-                        <label style="margin-top:10px;">Click if Replied</label>
+		                <button style="background-color: #185adb;border: none;color:  #185adb;text-align: center;text-decoration: none;display: inline-block;margin: .5px .5px;cursor: pointer;border-radius: 50%;" type="submit"id="test" onclick="myFunction1()" name="Read"></button>
+                        <br>
+                        <label style="margin-top:10px;"for="test">Click here if Replied</label>
                         </div>
                 </form>
             </div>
@@ -204,7 +205,7 @@
     </section>
 
     <section>
-    <h1 class="alert alert-success" role="alert" align="center">Feedbacks Already Responded</h1>
+        <h1 class="alert alert-success" role="alert" align="center">Answered Feedbacks</h1>
     </section>
 
     <section class="grid">
@@ -219,7 +220,7 @@
                 <form>
                     <h4 class="card-title">Sentiment : {{i.Sentiment}}</h4>
                 </form>
-                <form action="/analyze/{{i.Id}}/">
+                <form action="/analyze1/{{i.Id}}/">
                     <button type="submit" class="btn btn-primary" style="background-color:#231e23; margin-top:10px; ">Analyze</button>
                 </form>
             </div>

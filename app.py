@@ -309,28 +309,28 @@ def google_pie_chart():
     neg = count(New_Data.Sentiment,"Negative", glob=False)
     pos = count(New_Data.Sentiment,"Positive", glob=False)
     data = {'Task' : 'Hours per Day', 'Negative' : neg, 'Neutral' : neutral, 'Positive' : pos}
-
+    count1 = New_Data.query.filter_by(Read = "unread").count()
     change = count(New_Data.Change,'1', glob=False)
     unchange = count(New_Data.Change,'0', glob=False)
 
     data2 = {'Changed & Unchanged' : 'Hours per Day', 'Change' : change, 'Unchanged' : unchange}
     #print(data)
-    return render_template('piechart.html', data=data, data2=data2)
+    return render_template('piechart.html', data=data, data2=data2,count=count1)
 
-# route for pichart Agent page
-@app.route('/google-charts/piechart2')
-def google_pie_chart2():
+# route for pichart page
+@app.route('/google-charts1/piechart1')
+def google_pie_chart1():
     neutral = count(New_Data.Sentiment,"Neutral", glob=False)
     neg = count(New_Data.Sentiment,"Negative", glob=False)
     pos = count(New_Data.Sentiment,"Positive", glob=False)
     data = {'Task' : 'Hours per Day', 'Negative' : neg, 'Neutral' : neutral, 'Positive' : pos}
-
+    count1 = New_Data.query.filter_by(Replied = "notdone").count()
     change = count(New_Data.Change,'1', glob=False)
     unchange = count(New_Data.Change,'0', glob=False)
 
     data2 = {'Changed & Unchanged' : 'Hours per Day', 'Change' : change, 'Unchanged' : unchange}
     #print(data)
-    return render_template('piechartagent.html', data=data, data2=data2)
+    return render_template('piechart1.html', data=data, data2=data2,count=count1)    
 
 # fuction for google to collect data from database and draw a chart
 @app.route('/google-charts/barchart')
@@ -366,12 +366,12 @@ def google_bar_chart():
     sp = New_Data.query.filter_by(department="Schedules",Sentiment="Positive").count()
     sn =New_Data.query.filter_by(department="Schedules",Sentiment="Negative").count()
     sne = New_Data.query.filter_by(department="Schedules",Sentiment="Neutral").count()
+    count1 = New_Data.query.filter_by(Read = "unread").count()
     #print(data)
-    return render_template('trends.html', ap=ap,an=an,ane=ane,bp=bp,bn=bn,bne=bne,cp=cp,cn=cn,cne=cne,ccp=ccp,ccn=ccn,ccne=ccne,hp=hp,hn=hn,hne=hne,pp=pp,pn=pn,pne=pne,pcp=pcp,pcn=pcn,pcne=pcne,pap=pap,pan=pan,pane=pane,rp=rp,rn=rn,rne=rne,sp=sp,sn=sn,sne=sne)
+    return render_template('trends.html', ap=ap,an=an,ane=ane,bp=bp,bn=bn,bne=bne,cp=cp,cn=cn,cne=cne,ccp=ccp,ccn=ccn,ccne=ccne,hp=hp,hn=hn,hne=hne,pp=pp,pn=pn,pne=pne,pcp=pcp,pcn=pcn,pcne=pcne,pap=pap,pan=pan,pane=pane,rp=rp,rn=rn,rne=rne,sp=sp,sn=sn,sne=sne,count=count1)
 
-# fuction for google to collect data from database and draw a chart in agent
-@app.route('/google-charts/barchart2')
-def google_bar_chart2():
+@app.route('/google-charts1/barchart1')
+def google_bar_chart1():
     #obj = New_Data.query.filter_by(department="Accounts",Sentiment="Neutral").count()
     ap = New_Data.query.filter_by(department="Accounts",Sentiment="Positive").count()
     an = New_Data.query.filter_by(department="Accounts",Sentiment="Negative").count()
@@ -403,12 +403,15 @@ def google_bar_chart2():
     sp = New_Data.query.filter_by(department="Schedules",Sentiment="Positive").count()
     sn =New_Data.query.filter_by(department="Schedules",Sentiment="Negative").count()
     sne = New_Data.query.filter_by(department="Schedules",Sentiment="Neutral").count()
+    count1 = New_Data.query.filter_by(Replied = "notdone").count()
     #print(data)
-    return render_template('trendsagent.html', ap=ap,an=an,ane=ane,bp=bp,bn=bn,bne=bne,cp=cp,cn=cn,cne=cne,ccp=ccp,ccn=ccn,ccne=ccne,hp=hp,hn=hn,hne=hne,pp=pp,pn=pn,pne=pne,pcp=pcp,pcn=pcn,pcne=pcne,pap=pap,pan=pan,pane=pane,rp=rp,rn=rn,rne=rne,sp=sp,sn=sn,sne=sne)
+    return render_template('trends1.html', ap=ap,an=an,ane=ane,bp=bp,bn=bn,bne=bne,cp=cp,cn=cn,cne=cne,ccp=ccp,ccn=ccn,ccne=ccne,hp=hp,hn=hn,hne=hne,pp=pp,pn=pn,pne=pne,pcp=pcp,pcn=pcn,pcne=pcne,pap=pap,pan=pan,pane=pane,rp=rp,rn=rn,rne=rne,sp=sp,sn=sn,sne=sne,count=count1)
+
 
 # button function for each analyze to chech in multiclass classifier
 @app.route('/analyze/<num>/',methods=['POST', 'GET'])  
 def plotsentiment(num):
+    count1 = New_Data.query.filter_by(Read = "unread").count()
     obj = New_Data.query.filter_by(Id=num).first()
     array = plotsenti(obj.Text)
     db.session.commit()
@@ -426,11 +429,11 @@ def plotsentiment(num):
     relief = array["percentage"][11]
     anger = array["percentage"][12]
     data = {'Task' : 'Emotions', 'empty' : empty, 'sadness' : sadness, 'enthusiasm' : enthusiasm, 'neutral' : neutral, 'worry' : worry, 'surprise' : surprise, 'love' : love, 'fun' : fun, 'hate' : hate, 'happiness' : happiness, 'boredom' : boredom, 'relief' : relief, 'anger' : anger}
-    return render_template('sentipie.html', data=data,name=obj.name,text=obj.Text)
+    return render_template('sentipie.html', data=data,name=obj.name,text=obj.Text,count=count1)
 
-# button function for each analyze to chech in multiclass classifier
-@app.route('/analyse/<num>/',methods=['POST', 'GET'])  
-def plotsentimentagent2(num):
+@app.route('/analyze1/<num>/',methods=['POST', 'GET'])  
+def plotsentiment1(num):
+    count1 = New_Data.query.filter_by(Replied = "notdone").count()
     obj = New_Data.query.filter_by(Id=num).first()
     array = plotsenti(obj.Text)
     db.session.commit()
@@ -448,8 +451,9 @@ def plotsentimentagent2(num):
     relief = array["percentage"][11]
     anger = array["percentage"][12]
     data = {'Task' : 'Emotions', 'empty' : empty, 'sadness' : sadness, 'enthusiasm' : enthusiasm, 'neutral' : neutral, 'worry' : worry, 'surprise' : surprise, 'love' : love, 'fun' : fun, 'hate' : hate, 'happiness' : happiness, 'boredom' : boredom, 'relief' : relief, 'anger' : anger}
-    return render_template('sentipieagent.html', data=data,name=obj.name,text=obj.Text)
+    return render_template('sentipie.html', data=data,name=obj.name,text=obj.Text,count=count1)    
 
+    
 # route for fastapi
 # setting default value for the api
 

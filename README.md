@@ -39,9 +39,9 @@ Helping a business to understand the social sentiment of their brand, product or
 * machine learning algorithms used after performance analysis - naive bayse and ALBERT
 [For complete demo click here](https://drive.google.com/file/d/1W2hqoRnOri4c4hL3PC7zyQEO0El90wkR/view?usp=sharing>)
 
-# feedback page
+# Feedback page
 ![Screenshot (2272)](https://user-images.githubusercontent.com/65475955/125712517-67afb4ab-50de-4cb0-9305-03ee8aaf4e39.png)
-# login page
+# Login page
 ![Screenshot (2283)](https://user-images.githubusercontent.com/65475955/125712576-0b389042-716a-49e0-bc71-d746c505f2e3.png)
 # Supervisor's UI
 ![Screenshot (2282)](https://user-images.githubusercontent.com/65475955/125712711-2e7f8ea1-ba9f-41fd-b8d7-a0c2730ab94e.png)
